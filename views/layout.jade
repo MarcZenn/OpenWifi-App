@@ -25,8 +25,9 @@ html(lang='en', ng-app="masterModule")
 						li(ng-click="redirectLogout()")
 							a(href="collapsible.html") Logout
 					else
+						//- to redirect to login page simply use anchor tag...
 						li(ng-click="redirectLogin()")
-							a Login
+							a(href="#/login") Login 
 
 
 

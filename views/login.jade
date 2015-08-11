@@ -16,7 +16,7 @@ block loginContent
 		//- <!-- MAIN Form -->
 
 		div(class="login-form-1")
-			form(id="login-form", class="text-left", method="POST", action="/login")
+			form(id="login-form", class="text-left", ng-click="loginUser()")
 				div(class="login-form-main-message")
 				div(class="main-login-form")
 					div(class="login-group")
@@ -45,7 +45,7 @@ block loginContent
 		//- <!-- Main Form -->
 
 		div(class="login-form-1")
-			form(id="register-form", class="text-left", method="POST", action="/signup")
+			form(id="register-form", class="text-left", ng-click="registerUser()")
 				div(class="login-form-main-message")
 				div(class="main-login-form")
 					div(class="login-group")
@@ -79,7 +79,7 @@ block loginContent
 		//- <!-- Main Form -->
 
 		div(class="login-form-1")
-			form(id="forgot-password-form", class="text-left")
+			form(id="forgot-password-form", class="text-left", ng-click="forgotLogin()")
 				div(class="etc-login-form")
 					p When you fill in your registered email address, you will be sent instructions on how to reset your password.
 

@@ -59,18 +59,27 @@ master.controller('loginController', function($scope, $http, $resource){
 
 	console.log(loginController);
 
-	$scope.redirectLogout = function() {
+	$scope.loginUser() = function() {
 
-		$http.post('views/login', {"hello world"}).
-			
-			then function(response) {
-		}, 
+ 		$http.post('/login').
+  			then(function(response) {
+    
+  		}, function(response) {
+    
+  	});
 
-		function(response) {
+	}, 
 
-		}
+	$scope.registerUser() = function() {
 
-}
+		// $http.post('views/login', {"hello world"}).
+		// }, 
+
+		// function(response) {
+
+		// }
+
+	}
 
 
 
