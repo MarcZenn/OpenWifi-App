@@ -2,7 +2,7 @@ doctype html
 html(lang='en', ng-app="masterModule")
 	head
 		meta(charset="utf-8")
-		title What the Fuck?
+		title Open-Wifi
 		link(rel="stylesheet", href="stylesheets/nav.css")
 		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css")
 		link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
@@ -22,18 +22,18 @@ html(lang='en', ng-app="masterModule")
 					li
 						a(href="badges.html") Components
 					if user 
-						li(ng-click="redirectLogout()")
+						li
 							a(href="collapsible.html") Logout
 					else
 						//- to redirect to login page simply use anchor tag...
-						li(ng-click="redirectLogin()")
+						li
 							a(href="#/login") Login 
 
 
 
-		block loginContent
+		
 
-		block test 
+		block content 
 
 
 

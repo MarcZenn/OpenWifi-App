@@ -66,12 +66,13 @@ var authenticationController = {
       // to that handler.
       if(!user) {
         req.flash('error', 'Error logging in. Please try again.');
-        return res.redirect('/login');
+        return res.send({err : 'ERROR'});
       }
       
       // If we make it this far, the user has correctly authenticated with passport
       // so now, we'll just log the user in to the system.
-      performLogin(req, res, next, user);
+      // performLogin(req, res, next, user);
+      res.send(user);
     });
 
     // Now that we have the authentication method created, we'll call it here.
@@ -90,7 +91,9 @@ var authenticationController = {
     // work regardless of how the data is sent (post, get).
     // It is safer to send as post, however, because the actual data won't
     // show up in browser history.
-    var user = new User({
+    console.log(req.body)
+
+    var user = new User({ // add in entire schema here
       username: req.body.username,
       password: req.body.password,
       email: req.body.email
@@ -100,6 +103,7 @@ var authenticationController = {
     // database.
     user.save(function(err, user){
 
+      
       // If there is an error, it will come with some special codes and
       // information. We can customize the printed message based on
       // the error mongoose encounters
@@ -118,11 +122,20 @@ var authenticationController = {
         // Flash the message and redirect to the login view to
         // show it.
         req.flash('error', errorMessage);
-        return res.redirect('/login');
+        console.log("major error")
       }
 
       // If we make it this far, we are ready to log the user in.
-      performLogin(req, res, next, user);
+      // performLogin(req, res, next, user);
+
+      req.login(user , function(err) {
+        if(!err) {
+          res.send(user)
+        }
+        else {
+          console.log({err : "error"})
+        }  
+      })
     });
   },
 

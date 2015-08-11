@@ -1,94 +1,86 @@
-
-
 block extraHeader
 	link(rel="stylesheet", href="stylesheets/login.css")
 
-block loginContent
 
-	//- consider adding background image to this page!!!!!!
 
-	//- <!-- LOGIN FORM -->
+//- <!-- LOGIN FORM -->
+div(class="text-center", style="padding:50px 0")
+	div(class="logo") 
+		p login 
 
-	div(class="text-center", style="padding:50px 0")
-		div(class="logo") 
-			p login 
+	//- <!-- MAIN Form -->
 
-		//- <!-- MAIN Form -->
-
-		div(class="login-form-1")
-			form(id="login-form", class="text-left", ng-click="loginUser()")
-				div(class="login-form-main-message")
-				div(class="main-login-form")
-					div(class="login-group")
-						div(class="form-group")
-							input(type="text", class="form-control", id="lg_username", name="username", placeholder="username")
-						
-						div(class="form-group")
-							input(type="password", class="form-control", id="lg_password", name="password", placeholder="password")
-						
-						div(class="form-group")
-							input(type="email", class="form-control", id="lg_remember", name="email", placeholder="email")
-						
-					button(type="submit", class="login-button", ng-click="loginUser()")
-						i(class="fa fa-chevron-right")
-				
-				div(class="etc-login-form")
-					p forgot your password? 
-						a(href="#") click here
-
-	//- <!-- REGISTRATION FORM -->
-
-	div(class="text-center", style="padding:50px 0")
-		div(class="logo") 
-			p register
-
-		//- <!-- Main Form -->
-
-		div(class="login-form-1")
-			form(id="register-form", class="text-left", ng-click="registerUser()")
-				div(class="login-form-main-message")
-				div(class="main-login-form")
-					div(class="login-group")
-						div(class="form-group")
-							label(for="reg_username", class="sr-only") 
-							input(type="text", class="form-control", id="reg_username", name="username", placeholder="username")
-						
-						div(class="form-group")
-							label(for="reg_password", class="sr-only") 
-							input(type="password", class="form-control", id="reg_password", name="password", placeholder="password")
-						
-						div(class="form-group")
-							label(for="reg_email", class="sr-only")
-							input(type="email", class="form-control", id="reg_email", name="email", placeholder="email")
-						
-						div(class="form-group")
-							label(for="reg_fullname", class="sr-only") 
-							input(type="text", class="form-control", id="reg_fullname", name="fullname", placeholder="full name")
-
+	div(class="login-form-1")
+		form(id="login-form", class="text-left", ng-submit="loginUser()")
+			div(class="login-form-main-message")
+			div(class="main-login-form")
+				div(class="login-group")
+					div(class="form-group")
+						input(type="text", class="form-control", id="lg_username", ng-model="formdata.username", placeholder="username")
+					
+					div(class="form-group")
+						input(type="password", class="form-control", id="lg_password", ng-model="formdata.password", placeholder="password")
+					
+					div(class="form-group")
+						input(type="email", class="form-control", id="lg_remember", ng-model="formdata.email", placeholder="email")
+					
 					button(type="submit", class="login-button")
 						i(class="fa fa-chevron-right")
+			
+			div(class="etc-login-form")
+				p forgot your password? 
+					a(href="#") click here
 
-		//- <!-- end:Main Form -->
 
+//- <!-- REGISTRATION FORM -->
+div(class="text-center", style="padding:50px 0")
+	div(class="logo") 
+		p register
 
-	//- <!-- FORGOT PASSWORD FORM -->
+	//- <!-- Main Form -->
 
-	div(class="text-center", style="padding:50px 0")
-		div(class="logo") forgot password?
-
-		//- <!-- Main Form -->
-
-		div(class="login-form-1")
-			form(id="forgot-password-form", class="text-left", ng-click="forgotLogin()")
-				div(class="etc-login-form")
-					p When you fill in your registered email address, you will be sent instructions on how to reset your password.
-
-				div(class="login-form-main-message")
-				div(class="main-login-form")
-					div(class="login-group")
-						div(class="form-group")
-							input(type="text", class="form-control", id="fp_email", name="fp_email", placeholder="email address")
-
+	div(class="login-form-1")
+		form(id="register-form", class="text-left", ng-submit="registerUser()")
+			div(class="login-form-main-message")
+			div(class="main-login-form")
+				div(class="login-group")
+					div(class="form-group")
+						input(type="text", class="form-control", id="reg_username", ng-model="formdata.username", placeholder="username")
+					
+					div(class="form-group")
+						input(type="password", class="form-control", id="reg_password", ng-model="formdata.password", placeholder="password")
+					
+					div(class="form-group")
+						input(type="email", class="form-control", id="reg_email", ng-model="formdata.email", placeholder="email")
+					
+					div(class="form-group")
+						input(type="text", class="form-control", id="reg_fullname", ng-model="formdata.fullname", placeholder="full name")
 
 					button(type="submit", class="login-button")
-						i(class="fa fa-chevron-right")
+						//- i(class="fa fa-chevron-down")
+
+
+	//- <!-- end:Main Form -->
+
+
+//- <!-- FORGOT PASSWORD FORM -->
+
+div(class="text-center", style="padding:50px 0")
+	div(class="logo") forgot password?
+
+	//- <!-- Main Form -->
+
+	div(class="login-form-1")
+		form(id="forgot-password-form", class="text-left", ng-click="forgotLogin()")
+			div(class="etc-login-form")
+				p When you fill in your registered email address, you will be sent instructions on how to reset your password.
+
+			div(class="login-form-main-message")
+			div(class="main-login-form")
+				div(class="login-group")
+					div(class="form-group")
+						input(type="text", class="form-control", id="fp_email", name="fp_email", placeholder="email address")
+
+
+				button(type="submit", class="login-button")
+					i(class="fa fa-chevron-right")

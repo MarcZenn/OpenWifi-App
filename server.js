@@ -36,6 +36,7 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/client'));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json())
 
 // Add in the cookieParser and flash middleware so we can
 // use them later
@@ -79,7 +80,10 @@ app.get('/views/:template', indexController.templates)
 // app.get('/login', authenticationController.login); 
 
 // Post received from submitting the login form
-app.post('/login', authenticationController.processLogin);
+app.post('/login', authenticationController.processLogin); 
+
+//successful login route. 
+app.get('sucesslogin', indexController.successLogin) 
 
 // Post received from submitting the signup form
 app.post('/signup', authenticationController.processSignup);
@@ -87,11 +91,14 @@ app.post('/signup', authenticationController.processSignup);
 // Any requests to log out can be handled at this url
 app.get('/auth/logout', authenticationController.logout);
 
+
+
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),
 // We can prevent unauthorized access to any route handler defined after this call
 // to .use()
-app.use(passportConfig.ensureAuthenticated);
+
+// app.use(passportConfig.ensureAuthenticated); // put this literally right into specific routes that will authenticated. 
 
 // Because this route occurs after the ensureAuthenticated middleware, it will require
 // authentication before access is allowed. This goes for all routes after the ensureAuthenticated .use() on line 82

@@ -7,8 +7,8 @@ var indexController = {
 		res.render(req.params.template)
 	},
 
-	login: function(req, res) {
-		res.render('login');
+	successLogin: function(req, res) {
+		res.send(req.user);
 	}
 	
 	
