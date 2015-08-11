@@ -65,13 +65,18 @@ app.use(passport.session());
 
 
 
-// add all explanatory contenct, marketing materials and logic 
-// for potential users to home route. Login button on this page should redirect to route below.
-app.get('/', indexController.index);   
+// home route served up by the back-end. index is merely a div with ng-view directive for injections. 
+app.get('/', indexController.index);
+
+// this route handles routing for bth home and login page. Dyanamic page routing!!
+app.get('/views/:template', indexController.templates)
+
+
+
 
 
 // this route simply shows the login forms nothing more. 
-app.get('/login', authenticationController.login); 
+// app.get('/login', authenticationController.login); 
 
 // Post received from submitting the login form
 app.post('/login', authenticationController.processLogin);

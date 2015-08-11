@@ -8,21 +8,24 @@ var bcrypt = require('bcrypt');
  * given, the document is not inserted. Unique will prevent
  * saving if a duplicate entry is found.
  */
+
+ // data based on this schema reside mostly in profiles for Open-Wifi
 var userSchema = mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
+
+  username       : { type : String, required: true, unique: true },
+  email          : { type : String, required: true, unique: true },
+  password       : { type : String, required: true}, 
+  description    : { type : String },
+  location       : { type : String }, 
+  profilePic     : { type : String }, // url 
+  socialSite1    : { type : String }, // anchors wrapped in image url.
+  socialSite2    : { type : String },
+  socialSite3    : { type : String },
+  reviews        : { type : Object },
+  wifiSchedule   : { type : Array  }, 
+  ispInformtaion : { type : Object }
+
+
 });
 
 /**
