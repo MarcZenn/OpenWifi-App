@@ -12,18 +12,21 @@ var bcrypt = require('bcrypt');
  // data based on this schema reside mostly in profiles for Open-Wifi
 var userSchema = mongoose.Schema({
 
-  username       : { type : String, required: true, unique: true },
+  username       : { type : String, required: true, unique: true, default : "username"},
   email          : { type : String, required: true, unique: true },
   password       : { type : String, required: true}, 
-  description    : { type : String, default : "Tell us about yourself"},
-  location       : { type : String, default : "Rent Status" }, 
+  description    : { type : String, default : "add in description"},
+  status         : { type : String, default : "I'm Renting!" }, 
   profilePic     : { type : String,}, // url 
   socialSite1    : { type : String }, // anchors wrapped in image url.
   socialSite2    : { type : String },
   socialSite3    : { type : String },
   reviews        : { type : Object },
   wifiSchedule   : { type : Array  }, 
-  ispInformtaion : { type : Object }
+  wifiProvider   : { type : String, default : "CenturyLink" },
+  wifiBandwidth  : { type : String, default : "120bit/s" },
+  addOns         : { type : String, default : "something"},
+  location       : { type : Object, default : "Address" }
 
 
 });

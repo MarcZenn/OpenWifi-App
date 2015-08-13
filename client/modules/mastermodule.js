@@ -136,6 +136,16 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 
 	$scope.profileUser = userFactory.model.get({ username : $routeParams.username } ) // $routeparams comes from front end routing. 
 
+	$scope.editing = false
+
+	$scope.onEditing = function() {
+		$scope.editing = true 
+	}
+
+	// $scope.offEditing = function() {
+	// 	$scope.editing = true 
+	// }
+
 })
 
 

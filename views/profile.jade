@@ -1,36 +1,116 @@
 block profileHeaders
 	link(rel="stylesheet", href="stylesheets/profile.css")
 
-div.profile-top
-	div.profilePic
-		img(src="/images/default_profile_pic")
-		p {{profileUser.username}}
+div.profile-top.row
+	div(class="profilePicBox col s3")
+		img(src="images/default_profile_pic.jpg", ng-show="!editing")
+		input(src="/images/default_profile_pic", ng-show="editing", placeholder="add in image")
+		h1 {{profileUser.username}}
+		input(ng-show="editing", ng-model="profileUser.username", placeholder="edit username")
 
-	div.descriptionBox
-		h1 {{profileUser.location}}
-		p {{profileUser.description}} Fried cheese… with club sauce. Oh please. They didn't sneak into this country to be your friends. Say something that will terrify me. Lindsay: F*** me. Tobias: No, that didn't do it. Even it means me taking a chubby… I will suck it up. Wine only turns to alcohol if you let it sit. YOU'RE the Chiclet! Not me. Caw ca caw, caw ca caw, caw ca caw! Well, Michael, I did not find their buffoonery amusing.
-		div.socialButton1
-			button 
-				a(href="{{}}")
-		div.socialButton2
-			button
-				a(href="{{}}")
-		div.socialButton3
-			button
-				a(href="{{}}")
-div.statusBar 
-	div.status
-		h1 Vacancy
-
-
-
-
+	div(class="descriptionBox col s9")
+		h1(ng-show="!editing") {{profileUser.status}}
+		select(ng-model="profileUser.status", ng-show="editing")
+			option(value="1") test
+			option(value="2") test 2
+		h3 {{profileUser.location}}
+		input(ng-show="editing" ng-model="profileUser.location", placeholder="edit location")
+		p {{profileUser.description}}  
+		input(ng-show="editing", placeholder="short bio", ng-model="profileUser.description")
+	div.row(class="buttonsBox")
+		div(class="col s2")
+			a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact 
 		
+		div(class="col s2")
+			a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing") social
+
+		div(class="col s2")
+			a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing") social
+				
+		div(class="col 4")
+				a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
+
+
+div.row(class="ispBox") 
+	div(class="ispProviderBox col s4")
+		h3 Wifi Details: 
+		label My Wifi Provider:
+			p {{profileUser.wifiProvider}} 
+		label Wifi Bandwidth:		
+			p {{profileUser.wifiBandwidth}}
+		label Wifi Add-Ons:
+			p {{profileUser.addOns}} 
+	div(class="wifiSchedule col s8")
+		h3 Peak Wifi Hours:
+	
+		table.tg
+			tr 
+				th.time(class="tg-031e", style="text-align: center") Time
+				th(class="tg-031e", style="text-align: center") Sunday
+				th(class="tg-031e", style="text-align: center") Monday 
+				th(class="tg-031e", style="text-align: center") Tuesday
+				th(class="tg-031e", style="text-align: center") Wednesday
+				th(class="tg-031e", style="text-align: center") Thursday 
+				th(class="tg-031e", style="text-align: center") Friday 
+				th(class="tg-031e", style="text-align: center") Saturday 
+			tr
+				td.timeLabel 6:00 - 9:00am
+				td(class="tg-031e") 
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+			tr 
+				td.timeLabel 9:00am - 12:00pm
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+			tr
+				td.timeLabel 12:00pm - 3:00pm
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+			tr
+				td.timeLabel 3:00pm - 6:00pm
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+			tr
+				td.timeLabel 6:00pm - 9:00pm
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+			tr
+				td.timeLabel 9:00am - 12:00am
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+				td(class="tg-031e")
+
+div.reviewsContainer
+	h1.reviewsHeader Reviews:
+	div.reviewsBox
+		ul
+			li.review
 		
-
-
-
-
-
-
-h1 this is your profile {{profileUser.username}}

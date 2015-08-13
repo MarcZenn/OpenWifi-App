@@ -1,21 +1,109 @@
 .profile-top {
 	background-color: #FF2146;
 	width: 100%;
-	height: 300px;
+	/*height: 350px;*/
 	display: inline-block;
-	overflow-y: auto;
+	/*overflow: auto;*/
 	-webkit-box-shadow: 0px 0px 10px 0px #000000;
 	word-wrap: break-word;
+	padding-left: 15px;
+	padding-top: 8px;
 }
 
-.profilePic {
+
+.profilePicBox {
 	background-color: lightgrey;
-	width: 30%;
+	width: 25%;
 	height: 300px;
-	float: left;
+	position: relative;
+	text-align: center;
+	color: lightgrey;
+}
+
+.profilePicBox img {
+	width: 100%;
+	height: 100%;
+	margin: 5px;
 }
 
 .descriptionBox {
+	color: lightgrey;
 	width: 65%;
-	margin-left : 10px;
+	padding-left: 10px;
+
 }
+
+.buttonsBox {
+	margin-top: 18px;
+}
+
+
+
+.ispBox {
+	border-bottom: 1px solid #aaa;
+	height: 450px;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: auto;
+}
+
+.ispProviderBox {
+	background-color: white;
+	border-right: 1px solid #aaa;
+	height: 100%;
+
+}
+
+
+.reviews {
+	text-align: center;
+}
+
+.tg {
+	height: 200px;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+.tg td {
+	font-family:Arial, sans-serif;
+	font-size:14px;
+	padding:10px 5px;
+	border-style:solid;
+	border-width:1px;
+	overflow:hidden;
+	word-break:normal;
+}
+.tg th { 
+	font-family:Arial, sans-serif;
+	font-size:14px;
+	font-weight:normal;
+	padding:10px 5px;
+	overflow:hidden;
+	word-break:normal;
+}
+
+.timeLabel {
+	text-align: center;
+}
+
+.wifiSchedule h3 {
+	margin-bottom: 30px;
+}
+
+.tg tr .timeLabel {
+	border: none;
+}
+
+.time {
+	border-style:solid;
+	border-width:1px; 
+}
+
+.review {
+	width: 100%;
+	height: 20%;
+}
+
+
+

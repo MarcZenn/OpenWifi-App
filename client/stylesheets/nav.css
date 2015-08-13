@@ -1,3 +1,5 @@
 .nav-wrapper {
   background-color: #FF2146;
+  position: fixed;
+  top: 0px;
 }
