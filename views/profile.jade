@@ -1,3 +1,36 @@
-extends layout 
+block profileHeaders
+	link(rel="stylesheet", href="stylesheets/profile.css")
+
+div.profile-top
+	div.profilePic
+		img(src="/images/default_profile_pic")
+		p {{profileUser.username}}
+
+	div.descriptionBox
+		h1 {{profileUser.location}}
+		p {{profileUser.description}} Fried cheese… with club sauce. Oh please. They didn't sneak into this country to be your friends. Say something that will terrify me. Lindsay: F*** me. Tobias: No, that didn't do it. Even it means me taking a chubby… I will suck it up. Wine only turns to alcohol if you let it sit. YOU'RE the Chiclet! Not me. Caw ca caw, caw ca caw, caw ca caw! Well, Michael, I did not find their buffoonery amusing.
+		div.socialButton1
+			button 
+				a(href="{{}}")
+		div.socialButton2
+			button
+				a(href="{{}}")
+		div.socialButton3
+			button
+				a(href="{{}}")
+div.statusBar 
+	div.status
+		h1 Vacancy
 
 
+
+
+		
+		
+
+
+
+
+
+
+h1 this is your profile {{profileUser.username}}

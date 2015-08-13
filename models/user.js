@@ -15,9 +15,9 @@ var userSchema = mongoose.Schema({
   username       : { type : String, required: true, unique: true },
   email          : { type : String, required: true, unique: true },
   password       : { type : String, required: true}, 
-  description    : { type : String },
-  location       : { type : String }, 
-  profilePic     : { type : String }, // url 
+  description    : { type : String, default : "Tell us about yourself"},
+  location       : { type : String, default : "Rent Status" }, 
+  profilePic     : { type : String,}, // url 
   socialSite1    : { type : String }, // anchors wrapped in image url.
   socialSite2    : { type : String },
   socialSite3    : { type : String },

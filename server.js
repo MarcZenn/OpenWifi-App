@@ -83,15 +83,22 @@ app.get('/views/:template', indexController.templates)
 app.post('/login', authenticationController.processLogin); 
 
 //successful login route. 
-app.get('sucesslogin', indexController.successLogin) 
+app.get('sucesslogin', authenticationController.processLogin) 
 
 // Post received from submitting the signup form
 app.post('/signup', authenticationController.processSignup);
 
+app.post('/logout', authenticationController.logout);
+
 // Any requests to log out can be handled at this url
-app.get('/auth/logout', authenticationController.logout);
+// app.get('/api/me', authenticationController.logout);
 
 
+// route to check who is signed in.
+app.get('/api/me', indexController.authenticate);
+
+// this route hits database and looks for users. 
+app.get('/api/profiles/:username', indexController.getUser)
 
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),
