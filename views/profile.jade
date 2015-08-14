@@ -2,41 +2,51 @@ block profileHeaders
 	link(rel="stylesheet", href="stylesheets/profile.css")
 
 div.profile-top.row
-	div(class="profilePicBox col s3")
-		img(src="images/default_profile_pic.jpg", ng-show="!editing")
-		input(src="/images/default_profile_pic", ng-show="editing", placeholder="add in image")
-		h1 {{profileUser.username}}
-		input(ng-show="editing", ng-model="profileUser.username", placeholder="edit username")
+	div.profileCard
+		div(class="profilePicBox col s3")
+			img(src="images/default_profile_pic.jpg", ng-show="!editing")
+			input(src="/images/default_profile_pic", ng-show="editing", placeholder="add in image")
+			
+		div.row(class="descriptionBox col s9")
+			div(class="col s6")
+				h1 {{profileUser.name}}
+				input(ng-show="editing", ng-model="profileUser.name", placeholder="edit name")
+				h3 {{profileUser.location}}
+				input(ng-show="editing" ng-model="profileUser.location", placeholder="edit location")
+				p {{profileUser.description}}  
+				input(ng-show="editing", placeholder="short bio", ng-model="profileUser.description")
+			div(class="col s6")
+				img.statusImg(src="images/checkmark.png", ng-show="!editing")
 
-	div(class="descriptionBox col s9")
-		h1(ng-show="!editing") {{profileUser.status}}
-		select(ng-model="profileUser.status", ng-show="editing")
+		div.row(class="buttonsBox")
+			div(class="col s2")
+				a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact 
+			
+			div(class="col s2")
+				a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing", href="www.{{profileUser.socialSite1}}") social
+
+			div(class="col s2")
+				a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing", href="www.{{profileUser.socialSite2}}") social
+					
+			div
+					a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
+			
+			div(class="col s4")
+					a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+
+div.row(class="statusTextBox")          
+	h1.statusText(class="col s12", ng-show="!editing") {{profileUser.status}}
+	select(ng-model="profileUser.status", ng-show="editing")
 			option(value="1") test
 			option(value="2") test 2
-		h3 {{profileUser.location}}
-		input(ng-show="editing" ng-model="profileUser.location", placeholder="edit location")
-		p {{profileUser.description}}  
-		input(ng-show="editing", placeholder="short bio", ng-model="profileUser.description")
-	div.row(class="buttonsBox")
-		div(class="col s2")
-			a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact 
-		
-		div(class="col s2")
-			a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing") social
-
-		div(class="col s2")
-			a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing") social
-				
-		div(class="col 4")
-				a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
-
+			
 
 div.row(class="ispBox") 
 	div(class="ispProviderBox col s4")
 		h3 Wifi Details: 
 		label My Wifi Provider:
 			p {{profileUser.wifiProvider}} 
-		label Wifi Bandwidth:		
+		label Wifi Bandwidth:       
 			p {{profileUser.wifiBandwidth}}
 		label Wifi Add-Ons:
 			p {{profileUser.addOns}} 
@@ -110,7 +120,27 @@ div.row(class="ispBox")
 
 div.reviewsContainer
 	h1.reviewsHeader Reviews:
-	div.reviewsBox
-		ul
-			li.review
-		
+	div.leaveReviewButton(ng-if="userContainer.user.username != profileUser.username")
+		a(class="waves-effect waves-light btn-large", ng-click="submittingReview()") Leave a Review
+
+	div.reviewForm
+		div(class="row")
+			form(class="col s12")
+				div(class="row")
+					div(class="input-field col s12")
+						textarea(id="textarea1" class="materialize-textarea")
+						label(for="textarea1") Title
+
+		div(class="row")
+			form(class="col s12")
+				div(class="row")
+					div(class="input-field col s12")
+						textarea(id="textarea1" class="materialize-textarea")
+						label(for="textarea1") Review
+		div.row
+			div(class="col s4")
+				a(class="waves-effect waves-light btn-large") Submit
+			div(class="col s8")
+				lablel(class="") Date
+				input(type="date", class="datepicker")
+	

@@ -9,14 +9,26 @@ var bcrypt = require('bcrypt');
  * saving if a duplicate entry is found.
  */
 
+// Review Schema for posting user reviews. 
+
+// var reviewSchema = mongoose.Schema( {
+//   title     : {type : String},
+//   createdBy : {}, 
+//   postedOn  : {},
+//   dateCreated : {type : Number}
+//   body        : {type : String}
+
+// });
+
  // data based on this schema reside mostly in profiles for Open-Wifi
 var userSchema = mongoose.Schema({
 
   username       : { type : String, required: true, unique: true, default : "username"},
+  name           : { type : String, required : true, default : "User Name"},
   email          : { type : String, required: true, unique: true },
   password       : { type : String, required: true}, 
   description    : { type : String, default : "add in description"},
-  status         : { type : String, default : "I'm Renting!" }, 
+  status         : { type : String, default : "I've Got Open Wifi" }, 
   profilePic     : { type : String,}, // url 
   socialSite1    : { type : String }, // anchors wrapped in image url.
   socialSite2    : { type : String },
@@ -27,7 +39,7 @@ var userSchema = mongoose.Schema({
   wifiBandwidth  : { type : String, default : "120bit/s" },
   addOns         : { type : String, default : "something"},
   location       : { type : Object, default : "Address" }
-
+  // reviews        : {reviewSchema}
 
 });
 

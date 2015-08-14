@@ -31,7 +31,13 @@ masterModule.config(function($routeProvider){
 		.when('/profile/:username', { // why use a dynamic route here to render ones profile via the url?
 			templateUrl : '/views/profile',
 			controller  : 'profileController'
-		})
+		});
+
+	$routeProvider 
+		.when('/search', {
+			templateUrl : '/views/search',
+			controller  : 'searchController'
+		});
 
 
 });
@@ -64,18 +70,26 @@ masterModule.factory('userFactory', function($resource, $http){
 	
 	return {
 		model : model,
-		// profiles : model.query() // sends a request to /api/profiles 
 	}
 
 
 });
 
+masterModule.factory('reviewFactory', function($resource, $http) {
+	var model = $resource('api/posts') 
+
+
+	return {
+		model : model, 
+		posts 
+	}
+})
 
 
 
 
 
-
+// Authentication controller
 
 masterModule.controller('loginController', function($scope, $http, $resource, $location, authUser){
 
@@ -129,8 +143,10 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 
 
 
-// Profile Controller - Handles binding the users data to the users profile! 
+// Profile Controller - Handles binding the users data to the users profile!
+
 masterModule.controller('profileController', function($scope, $http, $resource, $location, authUser, $routeParams, userFactory) {
+
 	$scope.userContainer = authUser;
 
 
@@ -140,16 +156,49 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 
 	$scope.onEditing = function() {
 		$scope.editing = true 
+
+	};
+
+
+	$scope.submitToServer = function() {
+		console.log("this is front end scope", $scope.profileUser)
+		userFactory.model.save($scope.profileUser)
+
+		$scope.editing = false
+	};
+
+	$scope.submittingReview = false 
+
+	// Reviews 
+	$scope.submittingReview = function () {
+		$scope.submittingReview = true
+
 	}
 
-	// $scope.offEditing = function() {
-	// 	$scope.editing = true 
-	// }
+});
+
+// Search Controller. 
+
+masterModule.controller('searchController', function($scope, $http, $resource, $location, authUser, $routeParams) {
+
+	$scope.userContainer = authUser;
+
+	$http.get('/api/allUsers').
+		then(function(returnData){
+			$scope.profiles = returnData.data
+		})
+
+
+});
+
+
+masterModule.controller('reviewController', function($scope, $http, $resource, $location, authUser, $routeParams, reviewFactory) {
+	$scope.userContainer = authUser;
+
+
+
 
 })
-
-
-
 
 
 

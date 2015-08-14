@@ -19,8 +19,31 @@ var indexController = {
 		User.findOne({username : req.params.username}, function(err, userData) {
 			res.send(userData)
 		})
-	}
+	},
 
+	updateUser : function (req,res) {
+		console.log("tthis is server side: " , req.body)
+		User.update({username : req.params.username}, req.body, function(err, userData) {
+			console.log("successful database update")
+		})
+	}, 
+
+	getAllUsers : function (req,res) {
+		User.find({}, function(err, allUsers) {
+			res.send(allUsers)
+		})
+	}, 
+
+	createReview : function (req,res) {
+		var new reviewSchema({
+
+			title       : 
+  			createdBy   :  
+  			postedOn    : 
+  			dateCreated : 
+  			body        : 
+		})
+	}
 
 
 	

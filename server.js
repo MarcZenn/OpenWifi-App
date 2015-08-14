@@ -100,6 +100,12 @@ app.get('/api/me', indexController.authenticate);
 // this route hits database and looks for users. 
 app.get('/api/profiles/:username', indexController.getUser)
 
+app.post('/api/profiles/:username', indexController.updateUser)
+
+app.get('/api/allUsers', indexController.getAllUsers)
+
+
+
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),
 // We can prevent unauthorized access to any route handler defined after this call

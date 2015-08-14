@@ -48,13 +48,13 @@ div(class="text-center", style="padding:50px 0")
 						input(type="text", class="form-control", id="reg_username", ng-model="formdata.username", placeholder="username")
 					
 					div(class="form-group")
-						input(type="password", class="form-control", id="reg_password", ng-model="formdata.password", placeholder="password")
+						input(type="password", class="form-control", ng-model="formdata.password", placeholder="password")
 					
 					div(class="form-group")
-						input(type="email", class="form-control", id="reg_email", ng-model="formdata.email", placeholder="email")
+						input(type="email", class="form-control", ng-model="formdata.email", placeholder="email")
 					
 					div(class="form-group")
-						input(type="text", class="form-control", id="reg_fullname", ng-model="formdata.fullname", placeholder="full name")
+						input(type="text", class="form-control", ng-model="formdata.name", placeholder="name")
 
 					button(type="submit", class="login-button")
 						//- i(class="fa fa-chevron-down")

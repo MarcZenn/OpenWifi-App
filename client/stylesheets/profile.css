@@ -1,3 +1,8 @@
+
+
+/*============== CSS Not yet Modularized =========================================*/
+
+
 .profile-top {
 	background-color: #FF2146;
 	width: 100%;
@@ -6,12 +11,41 @@
 	word-wrap: break-word;
 	padding-left: 15px;
 	padding-top: 8px;
+	height: 450px;
+}
+.profileCard {
+	margin-left: 10%;
+	width: 90%;
+
 }
 
+.statusText {
+	text-align: center;
+	color: #FF2146;
+	font-family: Helvetica;
+}
+
+.statusTextBox {
+	background-color: white;
+	width: 100%;
+	border-bottom: 1px solid #aaa;
+}
+
+.statusImg {
+	width: 200px;
+	height: 200px;
+}
+
+.statusBox {
+	float: right;
+}
+
+.statusBox:after {
+	clear: both;
+}
 
 .profilePicBox {
-	background-color: lightgrey;
-	width: 25%;
+	width: 20%;
 	height: 300px;
 	position: relative;
 	text-align: center;
@@ -28,14 +62,28 @@
 	color: lightgrey;
 	width: 65%;
 	padding-left: 10px;
+	/*margin: none;*/
+
+}
+
+
+
+.descriptionBox h1 {
+	margin: 0px;
 
 }
 
 .buttonsBox {
-	margin-top: 18px;
+	margin-top: 40px;
+
 }
 
+.br {
+	clear: both;
+	overflow: hidden;
+}
 
+/*===============================================*//*===============================================*//*===============================================*/
 
 .ispBox {
 	border-bottom: 1px solid #aaa;
@@ -105,3 +153,16 @@
 
 
 
+
+.leaveReviewButton {
+	text-align: center;
+}
+
+.leaveReviewButton a {
+	width: 60%;
+}
+
+.reviewForm {
+	width: 50%;
+	margin: auto;
+}

@@ -93,10 +93,11 @@ var authenticationController = {
     // show up in browser history.
     console.log(req.body)
 
-    var user = new User({ // add in entire schema here
+    var user = new User({ // add in entire schema here??? why would Raine say put in entire schema not form data? 
       username: req.body.username,
       password: req.body.password,
-      email: req.body.email
+      email: req.body.email,
+      name : req.body.name
     });
 
     // Now that the user is created, we'll attempt to save them to the

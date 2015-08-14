@@ -1,1 +1,4 @@
-h1 search me. 
+div.searchContainer
+	input(ng-model="search")
+	div(ng-repeat="profile in profiles | filter:search | limitTo: 5")
+		h1 {{profile.name}}
