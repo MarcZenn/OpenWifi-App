@@ -39,8 +39,8 @@ var userSchema = mongoose.Schema({
   wifiProvider   : { type : String, default : "CenturyLink" },
   wifiBandwidth  : { type : String, default : "120bit/s" },
   addOns         : { type : String, default : "something"},
-  location       : { type : Object, default : "Address" }
-  // reviews        : {reviewSchema}
+  location       : { type : Object, default : "Street Address, City, State" },
+  reviews        : [reviewSchema]
 
 });
 

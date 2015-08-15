@@ -119,12 +119,14 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 
 	//function below uses http.post to receive form data from the passport back end which is the user's data. 
 	$scope.registerUser = function() {
+
 		
-		$scope.userContainer.user = authUser;
 
  		$http.post('/signup', $scope.formdata).
   			then(function(response) {
-  				authUser.user = response.data.data; 
+  				$scope.userContainer.user = response.data
+
+  				// authUser.user = response.data.data; 
   				$location.path('/profile/' + response.data.username)
   			
   		}, function(response) {
@@ -189,12 +191,11 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 
 		console.log($scope.profileUser._id)
 
-	}
+	};
 
 	$scope.submitReview = function() {
 
 		$scope.reviewFormData.postedOn = $scope.profileUser._id
-
 
 		$http.post('/api/reviews', $scope.reviewFormData).
 
@@ -204,7 +205,12 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 			}, function(response){
 				console.log(response)
 			});
-	}
+	};
+
+	// $http.get('api/reviews').
+	// 	then(function(returnData) {
+	// 		$scope.reviews = returnData.data;
+	// 	})
 
 
 
@@ -223,29 +229,10 @@ masterModule.controller('searchController', function($scope, $http, $resource, $
 			$scope.profiles = returnData.data
 		});
 
-
 });
 
 
 
-// Review Controller - handles submitting review
-
-// masterModule.controller('reviewController', function($scope, $http, $resource, $location, authUser, $routeParams, reviewFactory) {
-// 	$scope.userContainer = authUser;
-
-// 	$scope.submitReview = function() {
-
-// 		$http.post('/api/reviews', $scope.reviewFormData).
-
-// 			then(function(response) {
-// 				console.log(response)
-
-// 			}, function(response){
-// 				console.log(response)
-// 			});
-// 	}
-
-// });
 
 
 

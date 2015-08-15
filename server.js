@@ -108,6 +108,7 @@ app.get('/api/allUsers', indexController.getAllUsers)
 // Route for submitting reviews
 app.post('/api/reviews', indexController.createReview)
 
+app.get('/api/reviews', indexController.getAllReviews)
 
 
 // ***** IMPORTANT ***** //

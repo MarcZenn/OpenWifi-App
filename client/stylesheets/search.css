@@ -1,0 +1,17 @@
+.searchBox  {
+	padding-top: 10px;
+	width: 75%;
+	margin: auto;
+	/*border: 1px solid #aaa;*/
+}
+
+.spacer {
+	text-align: center;
+	height: 20px;
+	margin-bottom: 100px;
+}
+
+.searchResultsBox {
+	width: 80%;
+	margin: auto;
+}

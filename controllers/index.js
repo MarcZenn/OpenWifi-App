@@ -50,6 +50,13 @@ var indexController = {
 			console.log(responseData)
 			res.send(responseData)
 		})
+	}, 
+
+	getAllReviews : function (req, res) {
+		User.reviewSchema.find({}, function(err, allReviews) {
+			console.log(allReviews)
+			res.send(allReviews)
+		})
 	}
 
 

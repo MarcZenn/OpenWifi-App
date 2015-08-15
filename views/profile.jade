@@ -16,8 +16,10 @@ div.profile-top.row
 				p {{profileUser.description}}
 				textarea(class="form-control", rows="3", placeholder="About Me",  ng-model="profileUser.description", ng-show="editing")
 			div(class="col s4")
-				img.statusImg(src="images/checkmark.png", ng-show="!editing") 
-			
+				img.statusImg(src="images/checkmark.png", ng-show="!editing")
+					
+		a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+
 	div.row(class="buttonsBox col s12")
 		div(class="col s2")
 			a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact
@@ -25,14 +27,17 @@ div.profile-top.row
 		div
 			a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
 		
-		div(class="col s4")
-			a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+		a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+		
+		//- 	a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
 
 		
+//- Status Structure
 
-div.row(class="statusTextBox")          
+div.row(class="statusTextBox")
 	div(class="col s12")
 		h1.statusText(ng-show="!editing") {{profileUser.status}}
+		
 		
 			
 
@@ -52,6 +57,7 @@ div.row(class="ispBox")
 			option(value="1") I've Got Open WiFi
 			option(value="2") I Have No More Open WiFi
 			option(value='3') I Can Share My Open WiFi or Rent It
+
 
 	div(class="wifiSchedule col s8")
 		h3 Peak Wifi Hours:
@@ -141,17 +147,17 @@ div.reviewsContainer
 						textarea(class="form-control", rows="3", placeholder="Review",  ng-model="reviewFormData.body")
 		div.row
 			div(class="col s4")
-				a(class="waves-effect waves-light btn-large") Submit
+				a(class="waves-effect waves-light btn-large", ng-click="submitReview()") Submit
 			div(class="col s8")
 				lablel(class="") Date
 				input(type="date", class="datepicker",  ng-model="reviewFormData.date")
 
 	div.reviewWrapper
-		ul.collection
+		ul.collection(ng-repeat="review in reviews | limitTo: 10")
 			li(class="collection-item avatar")
 				img(src="images/default_profile_pic.jpg", class="circle")
-				span Title
-				p First Line 
+				span {{review.title}}
+				p First Line
 				p Second Line 
 
 	
