@@ -57,7 +57,7 @@ masterModule.factory('authUser', function($resource, $http){
 	})
 
 	
-	return userContainer 
+	return userContainer
 
 
 });
@@ -75,21 +75,25 @@ masterModule.factory('userFactory', function($resource, $http){
 
 });
 
-masterModule.factory('reviewFactory', function($resource, $http) {
-	var model = $resource('api/posts') 
+
+// Reviews Factory
+
+// masterModule.factory('reviewFactory', function($resource, $http) {
+
+// 	var model = $resource('api/posts/:username') 
 
 
-	return {
-		model : model, 
-		posts 
-	}
-})
+// 	return {
+// 		model : model, 
+// 		posts : posts
+// 	}
+// })
 
 
 
 
 
-// Authentication controller
+// Authentication/Login/Signup controller
 
 masterModule.controller('loginController', function($scope, $http, $resource, $location, authUser){
 
@@ -116,6 +120,8 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 	//function below uses http.post to receive form data from the passport back end which is the user's data. 
 	$scope.registerUser = function() {
 		
+		$scope.userContainer.user = authUser;
+
  		$http.post('/signup', $scope.formdata).
   			then(function(response) {
   				authUser.user = response.data.data; 
@@ -143,7 +149,7 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 
 
 
-// Profile Controller - Handles binding the users data to the users profile!
+// Profiles Controller 
 
 masterModule.controller('profileController', function($scope, $http, $resource, $location, authUser, $routeParams, userFactory) {
 
@@ -167,15 +173,44 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 		$scope.editing = false
 	};
 
+	// Handles the hiding/showing of review buttons/forms.
 	$scope.submittingReview = false 
 
-	// Reviews 
-	$scope.submittingReview = function () {
+	// form data function below grants me the person who received the review. 
+	$scope.reviewFormData = {}
+	
+	$scope.onReview = function() {
+
 		$scope.submittingReview = true
+
+		$scope.reviewFormData.postedOn = $scope.profileUser
+
+		console.log($scope.reviewFormData)
+
+		console.log($scope.profileUser._id)
 
 	}
 
+	$scope.submitReview = function() {
+
+		$scope.reviewFormData.postedOn = $scope.profileUser._id
+
+
+		$http.post('/api/reviews', $scope.reviewFormData).
+
+			then(function(response) {
+				console.log(response)
+
+			}, function(response){
+				console.log(response)
+			});
+	}
+
+
+
+
 });
+
 
 // Search Controller. 
 
@@ -186,19 +221,31 @@ masterModule.controller('searchController', function($scope, $http, $resource, $
 	$http.get('/api/allUsers').
 		then(function(returnData){
 			$scope.profiles = returnData.data
-		})
+		});
 
 
 });
 
 
-masterModule.controller('reviewController', function($scope, $http, $resource, $location, authUser, $routeParams, reviewFactory) {
-	$scope.userContainer = authUser;
 
+// Review Controller - handles submitting review
 
+// masterModule.controller('reviewController', function($scope, $http, $resource, $location, authUser, $routeParams, reviewFactory) {
+// 	$scope.userContainer = authUser;
 
+// 	$scope.submitReview = function() {
 
-})
+// 		$http.post('/api/reviews', $scope.reviewFormData).
+
+// 			then(function(response) {
+// 				console.log(response)
+
+// 			}, function(response){
+// 				console.log(response)
+// 			});
+// 	}
+
+// });
 
 
 

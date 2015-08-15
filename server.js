@@ -105,6 +105,10 @@ app.post('/api/profiles/:username', indexController.updateUser)
 app.get('/api/allUsers', indexController.getAllUsers)
 
 
+// Route for submitting reviews
+app.post('/api/reviews', indexController.createReview)
+
+
 
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),

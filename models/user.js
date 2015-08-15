@@ -11,14 +11,15 @@ var bcrypt = require('bcrypt');
 
 // Review Schema for posting user reviews. 
 
-// var reviewSchema = mongoose.Schema( {
-//   title     : {type : String},
-//   createdBy : {}, 
-//   postedOn  : {},
-//   dateCreated : {type : Number}
-//   body        : {type : String}
+var reviewSchema = mongoose.Schema ({
+  title       : {type : String},
+  createdBy   : {type : mongoose.Schema.ObjectId, ref: "user"}, // guy who left review
+  postedOn    : {type : mongoose.Schema.ObjectId, ref: "user"}, // guy who took review
+  dateCreated : {type : Number},
+  body        : {type : String},
+  date        : {type : String}
 
-// });
+});
 
  // data based on this schema reside mostly in profiles for Open-Wifi
 var userSchema = mongoose.Schema({

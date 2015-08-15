@@ -2,54 +2,57 @@ block profileHeaders
 	link(rel="stylesheet", href="stylesheets/profile.css")
 
 div.profile-top.row
-	div.profileCard
+	div.profileCard(class="col s12")
 		div(class="profilePicBox col s3")
 			img(src="images/default_profile_pic.jpg", ng-show="!editing")
 			input(src="/images/default_profile_pic", ng-show="editing", placeholder="add in image")
 			
 		div.row(class="descriptionBox col s9")
-			div(class="col s6")
+			div(class="col s8")
 				h1 {{profileUser.name}}
 				input(ng-show="editing", ng-model="profileUser.name", placeholder="edit name")
-				h3 {{profileUser.location}}
+				h4 {{profileUser.location}}
 				input(ng-show="editing" ng-model="profileUser.location", placeholder="edit location")
-				p {{profileUser.description}}  
-				input(ng-show="editing", placeholder="short bio", ng-model="profileUser.description")
-			div(class="col s6")
-				img.statusImg(src="images/checkmark.png", ng-show="!editing")
-
-		div.row(class="buttonsBox")
-			div(class="col s2")
-				a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact 
-			
-			div(class="col s2")
-				a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing", href="www.{{profileUser.socialSite1}}") social
-
-			div(class="col s2")
-				a(class="waves-effect blue waves-yellow btn-large", ng-show="!editing", href="www.{{profileUser.socialSite2}}") social
-					
-			div
-					a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
-			
+				p {{profileUser.description}}
+				textarea(class="form-control", rows="3", placeholder="About Me",  ng-model="profileUser.description", ng-show="editing")
 			div(class="col s4")
-					a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+				img.statusImg(src="images/checkmark.png", ng-show="!editing") 
+			
+	div.row(class="buttonsBox col s12")
+		div(class="col s2")
+			a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact
+				
+		div
+			a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
+		
+		div(class="col s4")
+			a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+
+		
 
 div.row(class="statusTextBox")          
-	h1.statusText(class="col s12", ng-show="!editing") {{profileUser.status}}
-	select(ng-model="profileUser.status", ng-show="editing")
-			option(value="1") test
-			option(value="2") test 2
+	div(class="col s12")
+		h1.statusText(ng-show="!editing") {{profileUser.status}}
+		
 			
 
 div.row(class="ispBox") 
 	div(class="ispProviderBox col s4")
 		h3 Wifi Details: 
-		label My Wifi Provider:
-			p {{profileUser.wifiProvider}} 
-		label Wifi Bandwidth:       
+		h7 My Wifi Provider:
+			textarea(ng-show="editing", ng-model="profileUser.wifiProvider", placeholder="edit name") 
+			p {{profileUser.wifiProvider}}
+		h7 Wifi Bandwidth:       
+			textarea(ng-show="editing", ng-model="profileUser.wifiBandwidth", placeholder="edit name") 
 			p {{profileUser.wifiBandwidth}}
-		label Wifi Add-Ons:
-			p {{profileUser.addOns}} 
+		h7 Wifi Add-Ons:
+			textarea(ng-show="editing", ng-model="profileUser.addOns", placeholder="edit name") 
+			p {{profileUser.addOns}}
+		select(ng-model="profileUser.status", ng-show="editing")
+			option(value="1") I've Got Open WiFi
+			option(value="2") I Have No More Open WiFi
+			option(value='3') I Can Share My Open WiFi or Rent It
+
 	div(class="wifiSchedule col s8")
 		h3 Peak Wifi Hours:
 	
@@ -118,29 +121,37 @@ div.row(class="ispBox")
 				td(class="tg-031e")
 				td(class="tg-031e")
 
+
 div.reviewsContainer
 	h1.reviewsHeader Reviews:
 	div.leaveReviewButton(ng-if="userContainer.user.username != profileUser.username")
-		a(class="waves-effect waves-light btn-large", ng-click="submittingReview()") Leave a Review
+		a(class="waves-effect waves-light btn-large", ng-click="onReview()") Leave a Review
 
-	div.reviewForm
+	div.reviewForm(ng-show="submittingReview", ng-submt="submitReview()" )
 		div(class="row")
 			form(class="col s12")
 				div(class="row")
 					div(class="input-field col s12")
-						textarea(id="textarea1" class="materialize-textarea")
-						label(for="textarea1") Title
+						textarea(id="textarea1" class="materialize-textarea", placeholder="Title",  ng-model="reviewFormData.title")
 
-		div(class="row")
+		div.row
 			form(class="col s12")
 				div(class="row")
 					div(class="input-field col s12")
-						textarea(id="textarea1" class="materialize-textarea")
-						label(for="textarea1") Review
+						textarea(class="form-control", rows="3", placeholder="Review",  ng-model="reviewFormData.body")
 		div.row
 			div(class="col s4")
 				a(class="waves-effect waves-light btn-large") Submit
 			div(class="col s8")
 				lablel(class="") Date
-				input(type="date", class="datepicker")
+				input(type="date", class="datepicker",  ng-model="reviewFormData.date")
+
+	div.reviewWrapper
+		ul.collection
+			li(class="collection-item avatar")
+				img(src="images/default_profile_pic.jpg", class="circle")
+				span Title
+				p First Line 
+				p Second Line 
+
 	
