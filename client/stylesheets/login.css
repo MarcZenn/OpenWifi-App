@@ -19,10 +19,13 @@ Last change	: 2015/03/27
 9. Misc
 -------------------------------------------------------------------*/
 /*=== 1. General Structure ===*/
-/*html,*/
+
+
+
+
 .text-center {
   text-align: center;
-  background: #efefef;
+  background: url(/images/HeroImage1.jpg) no-repeat center center fixed rgba(0,0,0,.5);
   padding: 10px;
   font-family: 'Varela Round';
 }
@@ -42,6 +45,7 @@ a:hover {
 }
 .etc-login-form p {
   margin-bottom: 5px;
+
 }
 /*=== 4. Main Form ===*/
 .login-form-1 {

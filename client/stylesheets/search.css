@@ -1,17 +1,56 @@
+.heroImageBox {
+	width: 100%;
+
+}
+.heroImageBox img {
+	width: 100%;
+	height: 800px;
+}
+
+
+.searchResultsBoxTitle {
+	text-align: center;
+	color: grey;
+}
+
+.searchInputContainer img {
+	width: 50%;
+	height: 50%;
+
+}
+
+.searchInputContainer  {
+	text-align: right;
+	
+}
+
+
+
 .searchBox  {
 	padding-top: 10px;
 	width: 75%;
 	margin: auto;
-	/*border: 1px solid #aaa;*/
+	
 }
 
 .spacer {
 	text-align: center;
 	height: 20px;
 	margin-bottom: 100px;
+	color: #0CCAE8;
 }
 
 .searchResultsBox {
+	padding-top: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
 	width: 80%;
 	margin: auto;
+	-webkit-box-shadow: 0px 0px 10px 0px #000000;
+	overflow: auto;
+	margin-bottom: 50px;
+	margin-top: 30px;
+	height : 600px;
+	
 }
+

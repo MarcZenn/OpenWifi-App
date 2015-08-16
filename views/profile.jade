@@ -14,24 +14,21 @@ div.profile-top.row
 				h4 {{profileUser.location}}
 				input(ng-show="editing" ng-model="profileUser.location", placeholder="edit location")
 				p {{profileUser.description}}
-				textarea(class="form-control", rows="3", placeholder="About Me",  ng-model="profileUser.description", ng-show="editing")
+				textarea(class="form-control", rows="3", placeholder="About Me",  ng-model="profileUser.description", ng-show="editing", maxlength="200")
 			div(class="col s4")
 				img.statusImg(src="images/checkmark.png", ng-show="!editing")
 					
-		a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+		//- a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
 
 	div.row(class="buttonsBox col s12")
 		div(class="col s2")
-			a(class="waves-effect blue waves-light btn-large", ng-show="!editing") Contact
+			a(class="waves-effect #0CCAE8 waves-light btn-large", ng-show="!editing") Contact
 				
 		div
 			a(class="btn waves-effect blue waves-teal btn-large", ng-if="userContainer.user.username === profileUser.username", ng-show="!editing", ng-click="onEditing()") Edit Profile
-		
-		a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
-		
-		//- 	a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
+			
+a(class="btn waves-effect blue waves-teal btn-large", ng-show="editing", ng-click="submitToServer()") Submit
 
-		
 //- Status Structure
 
 div.row(class="statusTextBox")

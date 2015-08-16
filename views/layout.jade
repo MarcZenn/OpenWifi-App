@@ -20,9 +20,17 @@ html(lang='en', ng-app="masterModule")
 				a(href="#/", class="brand-logo") Logo
 				ul(id="nav-mobile", class="right hide-on-med-and-down")
 					li
-						a(href="sass.html")
+						a(href="#/")
 					li
-						a(href="badges.html") Components
+						a(href="#/search") Home
+
+
+
+					li
+						a(href="#/search") Search 
+
+					li(ng-show="userContainer.user")
+						a(ng-href="#/profile/{{userContainer.user.username}}") My Profile
 
 					li(ng-click="logoutUser()", ng-show="userContainer.user")
 						a(href="") Logout
@@ -32,11 +40,7 @@ html(lang='en', ng-app="masterModule")
 						a(href="#/login") Login 
 
 					li
-						a(href="#/search") Search 
-
-					li(ng-show="userContainer.user")
-						a(ng-href="#/profile/{{userContainer.user.username}}") My Profile
-
+						a(href="#/myaccount") My Account 
 
 
 		
