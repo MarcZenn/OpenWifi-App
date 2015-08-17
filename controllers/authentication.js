@@ -97,7 +97,8 @@ var authenticationController = {
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
-      name : req.body.name
+      name : req.body.name,
+      dateCreated : new Date()
     });
 
     // Now that the user is created, we'll attempt to save them to the

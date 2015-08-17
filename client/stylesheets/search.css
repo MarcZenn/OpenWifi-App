@@ -1,10 +1,41 @@
+
+
 .heroImageBox {
-	width: 100%;
+	background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url(/images/darkHeroImage2.png);
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+  /*margin-bottom: 30px;*/
+  position: relative;
+  float: left;
+  text-align: center;
+  color: white;
+  top: 0;
+  -webkit-box-shadow: 0px 0px 10px 0px #000000;
 
 }
-.heroImageBox img {
-	width: 100%;
-	height: 800px;
+
+.heroImageBox h2 {
+  	margin-top: 25%;
+  	padding: 5px;
+  	font-family: Futura;
+}
+
+.heroImageBox h5 {
+  	font-family: Gill Sans;
+
+}
+
+.heroImageBox a {
+  	margin-top: 20px;
+  	font-family: Arial Narrow;
+  	color: lightgrey;
+
 }
 
 
@@ -20,25 +51,34 @@
 }
 
 .searchInputContainer  {
+	margin-top: 280px;
 	text-align: right;
+	background-color: black;
+	opacity: 0.5;
+	padding: 8px;
 	
 }
 
+::-webkit-input-placeholder {
+   /*text-align: center;*/
+   /*font-weight: 900;*/
+   font-size: 20px;
+}
 
+.clear {
+	clear: both;
+
+}
 
 .searchBox  {
-	padding-top: 10px;
+	/*padding-top: 10px;*/
 	width: 75%;
 	margin: auto;
 	
 }
 
-.spacer {
-	text-align: center;
-	height: 20px;
-	margin-bottom: 100px;
-	color: #0CCAE8;
-}
+
+
 
 .searchResultsBox {
 	padding-top: 40px;
@@ -46,7 +86,6 @@
 	padding-left: 20px;
 	width: 80%;
 	margin: auto;
-	-webkit-box-shadow: 0px 0px 10px 0px #000000;
 	overflow: auto;
 	margin-bottom: 50px;
 	margin-top: 30px;
@@ -54,3 +93,20 @@
 	
 }
 
+.descriptorBox {
+	width: 50%;
+	margin: auto;
+	padding-top: 80px;
+	margin-bottom: 40px;
+	font-family: Futura;
+
+}
+
+
+.colorizer {
+	width: 100%;
+	/*background-color: #02263d;*/
+	/*opacity: 0.3;*/
+	margin-bottom: 20px;
+	border-bottom: 1px solid #aaa;
+}

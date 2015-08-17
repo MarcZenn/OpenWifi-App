@@ -3,18 +3,45 @@ block searchHeaders
 
 
 div.heroImageBox
-	div
-		img(src="images/HeroImage2.jpg")
+	h2 The World is Full of Spare WiFi. 
+	h5 Rent hassle-free wifi from everyday people near you.
 
-//- div.searchContainer
-//- 	div.spacer
-//- 		h1 Search for Open-Wifi by Location
+	div.row(class="searchInputContainer")
+		div(class="col s1")
+		div(class="col s1")
+			img(src="images/searchIconRed.png")
+		div.searchBox(class="col s9")
+			textarea(type="text" placeholder="Search for Hosted WiFi by Location", ng-model="search")
+		div(class="col s1")
+			a(class="waves-effect waves-light btn") Search
+	
 
-div.row(class="searchInputContainer")
-	div(class="col s2")
-		img(src="images/searchIcon.png")
-	div.searchBox(class="col s9")
-		textarea(type="text" placeholder="Search for Open-Wifi by Location", ng-model="search")
+.clear
+
+
+
+div.colorizer
+	div.descriptorBox
+		div(class="card")
+			div(class="card-image waves-effect waves-block waves-light")
+				img(class="activator" src="images/descriptorImage2.jpg")
+			div(class="card-content")
+				span(class="card-title activator grey-text text-darken-4") Founded in 2015 and based in Boulder, Colorado, Open-Wifi is a trusted community marketplace for people to list, discover, and share hassle-free wifi from others living nearby-  
+					i(class="material-icons right activator") Read More
+				
+			div(class="card-reveal")
+				span(class="card-title grey-text text-darken-4")
+					i(class="material-icons right") X
+				h3(style="color:#0CCAE8") Discover WiFi Without Hassle:
+				p(style="color:#FFCE0D") Find hosts living near you with extra or unused WiFi signal. Whether its your neighbor or your roommate/s it beats dealing with Internet Service Providers....and that's the truth.
+				h3(style="color:#0CCAE8") Agree to Share WiFi
+				p(style="color:#FFCE0D") connect with these hosts and agree to  
+
+	
+	div(style="text-align: center; margin-bottom:70px;")
+		a(class="waves-effect waves-light btn", href="#/login") Sign Up
+
+
 
 div.searchResultsBoxTitle
 	h1 Listings Near You 
@@ -26,3 +53,4 @@ div.searchResultsBox
 					a(href="#/profile/{{profile.username}}") {{profile.name}}
 					p {{profile.location}}
 					p {{profile.status}} 
+

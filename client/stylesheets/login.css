@@ -22,12 +22,12 @@ Last change	: 2015/03/27
 
 
 
-
 .text-center {
   text-align: center;
-  background: url(/images/HeroImage1.jpg) no-repeat center center fixed rgba(0,0,0,.5);
+  background: url(/images/HeroImage4.jpg) no-repeat center center fixed rgba(0,0,0,.5);
   padding: 10px;
   font-family: 'Varela Round';
+
 }
 /*=== 2. Anchor Link ===*/
 a {

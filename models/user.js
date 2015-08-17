@@ -40,7 +40,8 @@ var userSchema = mongoose.Schema({
   wifiBandwidth  : { type : String, default : "120bit/s" },
   addOns         : { type : String, default : "something"},
   location       : { type : Object, default : "Street Address, City, State" },
-  reviews        : [reviewSchema]
+  reviews        : [reviewSchema],
+  dateCreated    : {type : Date}
 
 });
 

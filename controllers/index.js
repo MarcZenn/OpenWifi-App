@@ -53,10 +53,12 @@ var indexController = {
 	}, 
 
 	getAllReviews : function (req, res) {
-		User.reviewSchema.find({}, function(err, allReviews) {
+
+		User.reviewSchema.find({}).populate("createdBy").exec(function(err, allReviews) {
 			console.log(allReviews)
 			res.send(allReviews)
-		})
+
+		});
 	}
 
 
