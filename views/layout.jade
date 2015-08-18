@@ -10,25 +10,27 @@ html(lang='en', ng-app="masterModule")
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
 		block loginHeader
 		block profileHeaders
-		block searchHeaders
+		block homeHeaders
+		block searchHeader
 
 
 	body(style="margin : 0px")
 	
 		nav(ng-controller="loginController")
 			div(class="nav-wrapper")
-				a(href="#/search", class="brand-logo")
+				a(href="#/", class="brand-logo")
 					img(src="images/logo.png", style="width:60px;height:50px")
 				ul(id="nav-mobile", class="right hide-on-med-and-down")
 					li
 						a(href="#/")
 					li
-						a(href="#/search") Home
+						a(href="#/") Home
 
 
 
 					li
 						a(href="#/search") Search 
+
 
 					li(ng-show="userContainer.user")
 						a(ng-href="#/profile/{{userContainer.user.username}}") My Profile
@@ -40,8 +42,8 @@ html(lang='en', ng-app="masterModule")
 					li(ng-show="!userContainer.user")
 						a(href="#/login") Login 
 
-					li
-						a(href="#/myaccount") My Account 
+					li(ng-show="userContainer.user")
+						a(href="#/myaccount/{userContainer.user.username}}") My Account 
 
 
 		

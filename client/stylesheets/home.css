@@ -1,0 +1,136 @@
+.heroImageBox {
+	background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url(/images/darkHeroImage2.png);
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+  /*margin-bottom: 30px;*/
+  position: relative;
+  float: left;
+  text-align: center;
+  color: white;
+  top: 0;
+  -webkit-box-shadow: 0px 0px 10px 0px #000000;
+
+}
+
+.heroImageBox h1 {
+  	margin-top: 25%;
+  	padding: 5px;
+  	font-family: Futura;
+}
+
+.heroImageBox h5 {
+  	font-family: Gill Sans;
+
+}
+
+.heroImageBox a {
+  	margin-top: 6px;
+  	font-family: Arial Narrow;
+  	color: lightgrey;
+
+}
+
+
+.searchResultsBoxTitle {
+	text-align: center;
+	color: grey;
+}
+
+.searchInputContainer img {
+	width: 50%;
+	height: 50%;
+
+}
+
+.searchInputContainer  {
+	
+	text-align: right;
+	background-color: black;
+	opacity: 0.8;
+	padding: 15px;
+	margin-bottom: 0;
+
+}
+
+.searchInputContainer textarea {
+	
+	color:white;
+
+}
+
+::-webkit-input-placeholder {
+   
+   font-size: 15px;
+   padding: 5px;
+   color: white;
+}
+
+.clear {
+	clear: both;
+
+}
+
+.searchBox  {
+	
+	width: 75%;
+	margin: auto;
+	
+}
+
+.howitworksCard { 
+	height: 135px;
+	word-wrap: break-word;
+}
+
+
+
+.searchResultsBox {
+	padding-top: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	width: 80%;
+	margin: auto;
+	overflow: auto;
+	margin-bottom: 50px;
+	margin-top: 30px;
+	height : 600px;
+	
+}
+
+.descriptorBox {
+	display: inline-block;
+	width: 90%;
+	padding-top: 80px;
+	margin-bottom: 40px;
+	font-family: Futura;
+	word-wrap: break-word;
+
+}
+
+.aboutText {
+	width: 70%;
+	margin:auto;
+}
+
+.colorizer {
+	background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/images/HeroImage6.jpg);
+	opacity: 0.7;
+	color: #FF133D;
+	text-align: center;
+	margin-bottom: 20px;
+	padding-top: 150px;
+	border-bottom: 1px solid #aaa;
+}
+
+

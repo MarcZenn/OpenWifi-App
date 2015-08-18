@@ -1,11 +1,96 @@
+block homeHeaders
+	link(rel="stylesheet", href="stylesheets/home.css")
 
 
+div.heroImageBox
+	h1 The World is Full of Spare WiFi. 
+	h5 Rent stress-free wifi from people near you. It beats dealing with IP's
 
-
-
-
-
-
-
-h1 this is going to be your home page with a login button which redirects to login! 
+	//- div.row(class="searchInputContainer")
+	//- 	div(class="col s1")
+	//- 		img(src="images/searchIconRed.png")
+	//- 	div.searchBox(class="col s9")
+	//- 		textarea(type="text" placeholder="Search for Hosted WiFi by Location", ng-model="search")
+	//- 	div(class="col s1")
+	//- 		a(class="waves-effect waves-light btn", class="back-to-top" scroll-to-item scroll-to="#top-scroll") Search
 	
+
+.clear
+
+div.row(class="searchInputContainer")
+		div(class="col s1")
+			img(src="images/searchIconRed.png")
+		div.searchBox(class="col s9")
+			textarea(type="text" placeholder="Search for Hosted WiFi by Location", ng-model="search")
+		div(class="col s1")
+			a(class="waves-effect waves-light btn", class="back-to-top" scroll-to-item scroll-to="#top-scroll") Search
+
+
+div.colorizer
+	div.aboutText
+		h4 Founded in 2015 and based in Boulder, Colorado, Open-Wifi is a trusted community marketplace for people to list, discover, and share hassle-free wifi from others living nearby.
+	div.descriptorBox(class="row")
+
+		div.howitworksCard(class="card col s4")
+			div(class="card-image waves-effect waves-block waves-light")
+				img(class="activator")
+			div(class="card-content")
+				span(class="card-title activator grey-text text-darken-4", style="color:#3AFFD2") Discover WiFi Without Stress:
+					i(class="material-icons right activator") ...
+				
+			div(class="card-reveal")
+				span(class="card-title grey-text text-darken-4")
+					i(class="material-icons right") x
+				p(style="color:#3AE866") Find hosts living near you with extra or unused WiFi signal. Whether its your neighbor or your roommate/s it beats dealing with Internet Service Providers....and that's the truth.
+
+		div.howitworksCard(class="card col s4")
+			div(class="card-image waves-effect waves-block waves-light")
+				img(class="activator")
+			div(class="card-content")
+				span(class="card-title activator grey-text text-darken-4") Agree to Share Network Signal:
+					i(class="material-icons right activator") ...
+				
+			div(class="card-reveal")
+				span(class="card-title grey-text text-darken-4")
+					i(class="material-icons right") x
+				p(style="color:#FFA91B") Just subscribe on the renters profile and that's it. Payments are sent from you to the renter once a month. Your information is legally protected. 
+
+		div.howitworksCard(class="card col s4")
+			div(class="card-image waves-effect waves-block waves-light")
+				img(class="activator")
+			div(class="card-content")
+				span(class="card-title activator grey-text text-darken-4") Same old WiFi....lower costs:
+					i(class="material-icons right activator") ...
+				
+			div(class="card-reveal")
+				span(class="card-title grey-text text-darken-4") 
+					i(class="material-icons right") x
+				p(style="color:#39B9E8") Price per month is set by the host which saves you money throughout the year.    
+
+	
+	div(style="text-align: center; margin-bottom:70px;")
+		a(class="waves-effect red waves-light btn", href="#/login") Sign Up
+
+
+
+
+
+
+
+
+div.searchResultsBoxTitle(id="top-scroll" name="top")
+	h1 WiFi Near You 
+
+
+div.searchBox(class="col s")
+	textarea(type="text" placeholder="Search for Hosted WiFi by Location", ng-model="search")
+
+
+div.searchResultsBox
+	ul.collection(ng-repeat="profile in profiles | filter:search | limitTo: 10")
+				li(class="collection-item avatar")
+					img(src="images/default_profile_pic.jpg", class="circle")
+					a(href="#/profile/{{profile.username}}") {{profile.name}}
+					p {{profile.location}}
+					p {{profile.status}} 
+

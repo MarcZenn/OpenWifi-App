@@ -66,7 +66,7 @@ var authenticationController = {
       // to that handler.
       if(!user) {
         req.flash('error', 'Error logging in. Please try again.');
-        return res.send({err : 'ERROR'});
+        res.send({err : 'ERROR!'});
       }
       
       // If we make it this far, the user has correctly authenticated with passport
@@ -91,7 +91,7 @@ var authenticationController = {
     // work regardless of how the data is sent (post, get).
     // It is safer to send as post, however, because the actual data won't
     // show up in browser history.
-    console.log(req.body)
+   
 
     var user = new User({ // add in entire schema here??? why would Raine say put in entire schema not form data? 
       username: req.body.username,
@@ -124,7 +124,7 @@ var authenticationController = {
         // Flash the message and redirect to the login view to
         // show it.
         req.flash('error', errorMessage);
-        console.log("major error")
+        res.send({err: "This user exists!"})
       }
 
       // If we make it this far, we are ready to log the user in.

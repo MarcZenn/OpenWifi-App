@@ -1,4 +1,4 @@
-var masterModule = angular.module('masterModule', ['ngResource', 'ngRoute', 'profileModule' ])
+var masterModule = angular.module('masterModule', ['ngResource', 'ngRoute', ])
 
 // in here you simply need to handle you login routes. The reference to profilemodule as a dependency will handle grabbing the data
 // for each user and filling out the profile. 
@@ -14,7 +14,7 @@ masterModule.config(function($routeProvider){
 			templateUrl : '/views/home', 
 			// this is the frontend controller that grabs the data from the back-end controller and 
 			// is sent along with the template to append data and handle behavior etc!
-			controller  : 'profileController' 
+			controller  : 'homeController' 
 		});
 
 	// because route is dynamic on backend this front end route still uses a param to send template. 
@@ -60,7 +60,10 @@ masterModule.factory('authUser', function($resource, $http){
 	return userContainer
 
 
-});
+	});
+
+
+
 
 // User grab factory injected into profileController
 masterModule.factory('userFactory', function($resource, $http){
@@ -69,25 +72,30 @@ masterModule.factory('userFactory', function($resource, $http){
 
 	
 	return {
-		model : model,
+		model : model
 	}
 
 
-});
+	});
 
 
-// Reviews Factory
-
-// masterModule.factory('reviewFactory', function($resource, $http) {
-
-// 	var model = $resource('api/posts/:username') 
 
 
-// 	return {
-// 		model : model, 
-// 		posts : posts
-// 	}
-// })
+// Scroll to search results directive placed on Home Page.
+masterModule.directive('scrollToItem', function() {                                                      
+    return {                                                                                 
+        restrict: 'A',                                                                       
+        scope: {                                                                             
+            scrollTo: "@"                                                                    
+        },                                                                                   
+        link: function(scope, $elm,attr) {                                                   
+
+            $elm.on('click', function() {                                                    
+                $('html,body').animate({scrollTop: $(scope.scrollTo).offset().top }, "slow"); // jquery lite
+            });                                                                              
+        }                                                                                    
+    }})     
+
 
 
 
@@ -99,10 +107,11 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 
 	$scope.userContainer = authUser;
 
+	$scope.loginError = false;
 	//function below uses http.post to receive form data from the passport back end which is the user's data.  
 	$scope.loginUser = function() {
 
- 		$http.post('/login', $scope.formdata).
+ 		$http.post('/login', $scope.loginFormdata).
   			then(function(response) {
   				if (response.err) {
   					console.log("bad login boy:", response.err)
@@ -112,7 +121,7 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
   					$location.path('/profile/' + response.data.username)
   				}
   		}, function(response) {
-    		console.log(response.data)
+    		$scope.loginError = true; 
   		});
 
 	};
@@ -121,33 +130,59 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 	$scope.registerUser = function() {
 
 		
+		
+ 		$http.post('/signup', $scope.signupFormdata).
 
- 		$http.post('/signup', $scope.formdata).
   			then(function(response) {
-  				$scope.userContainer.user = response.data
 
-  				// authUser.user = response.data.data; 
-  				$location.path('/profile/' + response.data.username)
-  			
+  				if(response.data.err) {
+  					$scope.signupError = true;
+  				}
+
+  				else {
+
+					$scope.signupError = false;
+
+  					$scope.userContainer.user = response.data
+
+  					authUser.user = response.data; 
+  					console.log(response.data.data)
+  					$location.path('/profile/' + response.data.username, {user: response.data.data})
+  			}
   		}, function(response) {
-    		console.log(response.err)
+    		$scope.signupError = true;
   		});
 
 	}, 
 
 	$scope.logoutUser = function () {
 		$http.post('/logout').
-			then(function(repsonse) {
+			then(function(response) {
 				$location.path('/login')
 				authUser.user = null;
-		}, function(reponse) {
+		}, function(response) {
 			console.log(response.err)
 		});
 	}
 
 	
 
-});
+	});
+
+
+
+masterModule.controller('homeController', function($scope, $http, $resource, $location, authUser) {
+
+	// Home search 
+
+	$http.get('/api/allUsers').
+		then(function(returnData){
+			$scope.profiles = returnData.data
+		});
+
+
+
+})
 
 
 
@@ -158,7 +193,7 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 	$scope.userContainer = authUser;
 
 
-	$scope.profileUser = userFactory.model.get({ username : $routeParams.username } ) // $routeparams comes from front end routing. 
+	$scope.profileUser = userFactory.model.get( { username : $routeParams.username } ) // $routeparams comes from front end routing. 
 
 	$scope.editing = false
 
@@ -187,32 +222,34 @@ masterModule.controller('profileController', function($scope, $http, $resource, 
 
 		$scope.reviewFormData.postedOn = $scope.profileUser
 
-		console.log($scope.reviewFormData)
+			console.log($scope.reviewFormData)
 
-		console.log($scope.profileUser._id)
+			console.log($scope.profileUser._id)
 
 	};
 
 	$scope.submitReview = function() {
 
-		$scope.reviewFormData.postedOn = $scope.profileUser._id
 
-		$http.post('/api/reviews', $scope.reviewFormData).
+		$scope.submittingReview = false;
 
-			then(function(response) {
-				console.log(response)
+		$scope.reviewFormData.username = $routeParams.username;
 
-			}, function(response){
-				console.log(response)
-			});
+		$http.post('/api/reviews', $scope.reviewFormData)
+
+			console.log($scope.reviewFormData.username)
+
+			$http.get('/api/profiles/:username').
+				then(function(returnData){
+				$scope.profiles = returnData.data
+				console.log = returnData.data
+		});
+
+	
 	};
 
-	// $http.get('api/reviews').
-	// 	then(function(returnData) {
-	// 		$scope.reviews = returnData.data;
-	// 	})
-
-
+	
+	
 
 
 });

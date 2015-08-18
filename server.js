@@ -102,13 +102,15 @@ app.get('/api/profiles/:username', indexController.getUser)
 
 app.post('/api/profiles/:username', indexController.updateUser)
 
+
 app.get('/api/allUsers', indexController.getAllUsers)
+
 
 
 // Route for submitting reviews
 app.post('/api/reviews', indexController.createReview)
 
-app.get('/api/reviews', indexController.getAllReviews)
+// app.get('/api/reviews', indexController.getAllReviews)
 
 
 // ***** IMPORTANT ***** //

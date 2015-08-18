@@ -35,31 +35,18 @@ var indexController = {
 	}, 
 
 	createReview : function (req,res) {
-		var newReview = new reviewSchema ({
+		
+		req.body.postedOn = req.body.postedOn._id;
 
-			title       : req.body.title,
-  			createdBy   : req.user._id,
-  			postedOn    : req.body.postedOn,
-  			dateCreated : req.body.date,
-  			body        : req.body.body
-		}); 
-
-		console.log(req.user._id)
-
-		review.save(function(responseData) {
-			console.log(responseData)
-			res.send(responseData)
-		})
-	}, 
-
-	getAllReviews : function (req, res) {
-
-		User.reviewSchema.find({}).populate("createdBy").exec(function(err, allReviews) {
-			console.log(allReviews)
-			res.send(allReviews)
-
+			console.log(req.body)
+		User.update({username: req.body.username}, {$push : {reviews: req.body}}, function(err, doc) {
+			console.log(err, doc)
+			res.send(doc);
+			
 		});
 	}
+
+	
 
 
 	
