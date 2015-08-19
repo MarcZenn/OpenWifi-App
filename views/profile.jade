@@ -75,7 +75,7 @@ div.row(class="ispBox")
 				th(class="tg-031e", style="text-align: center") Saturday 
 			tr
 				td.timeLabel 6:00 - 9:00am
-				td(class="tg-031e") 
+				td(class="tg-031e")
 				td(class="tg-031e")
 				td(class="tg-031e")
 				td(class="tg-031e")
@@ -127,14 +127,14 @@ div.row(class="ispBox")
 				td(class="tg-031e")
 				td(class="tg-031e")
 				td(class="tg-031e")
-
+				
 
 div.reviewsContainer
 	h1.reviewsHeader Reviews:
 	div.leaveReviewButton(ng-if="userContainer.user.username != profileUser.username")
 		a(class="waves-effect waves-light btn-large", ng-click="onReview()") Leave a Review
 
-	div.reviewForm(ng-show="submittingReview", ng-submt="submitReview()" )
+	div.reviewForm(ng-show="submittingReview", ng-submit="submitReview()" )
 		div(class="row")
 			form(class="col s12")
 				div(class="row")
