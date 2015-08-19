@@ -174,7 +174,8 @@ masterModule.controller('loginController', function($scope, $http, $resource, $l
 masterModule.controller('homeController', function($scope, $http, $resource, $location, authUser) {
 
 	// Home search 
-
+	$scope.userContainer = authUser;
+	
 	$http.get('/api/allUsers').
 		then(function(returnData){
 			$scope.profiles = returnData.data

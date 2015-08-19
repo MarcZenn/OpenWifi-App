@@ -76,14 +76,15 @@ div.searchResultsBoxTitle(id="top-scroll" name="top")
 
 
 div.searchBox(class="col s")
-	textarea(type="text" placeholder="Search for Hosted WiFi by Location", ng-model="search")
+	textarea(type="text" placeholder="Type in Your Address", ng-model="search")
 
 
 div.searchResultsBox
 	ul.collection(ng-repeat="profile in profiles | filter:search | limitTo: 10")
 				li(class="collection-item avatar")
 					img(src="images/default_profile_pic.jpg", class="circle")
-					a(href="#/profile/{{profile.username}}") {{profile.name}}
+					a(href="#/login",ng-if="!userContainer.user") {{profile.name}}
+					a(href="#/profile/{{profile.username}}", ng-show="userContainer.user") {{profile.name}}
 					p {{profile.location}}
 					p {{profile.status}} 
 
